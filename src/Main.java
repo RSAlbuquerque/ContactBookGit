@@ -15,6 +15,7 @@ public class Main {
     public static final String LIST_CONTACTS  = "LC";
     public static final String QUIT           = "Q";
     public static final String LOOK_CONTACT = "GN";
+    public static final String SAME_PHONE_N = "EP";
 
     //Constantes que definem as mensagens para o utilizador
     public static final String CONTACT_EXISTS = "contactBook.Contact already exists.";
@@ -56,6 +57,9 @@ public class Main {
                     break;
                 case LOOK_CONTACT:
                     lookContact(in, cBook);
+                    break;
+                case SAME_PHONE_N:
+                    samePhoneN(cBook);
                     break;
                 default:
                     System.out.println(COMMAND_ERROR);
@@ -160,5 +164,13 @@ public class Main {
             }
         }
         else System.out.println(BOOK_EMPTY);
+    }
+
+    private static void samePhoneN(ContactBook cBook) {
+        if (cBook.samePhoneName() == false){
+            System.out.println("All contacts have different phone numbers.");
+        } else {
+            System.out.println("There are contacts that share phone numbers.");
+        }
     }
 }
